@@ -17,7 +17,6 @@ Summary:        ccat is the colorizing cat. It works similar to cat but displays
 Group:          Applications/System
 License:        MIT
 URL:            https://github.com/%{gh_user}/%{name}
-Source0:        https://github.com/%{gh_user}/%{name}/archive/v%{version}.tar.gz
 BuildRequires:  golang
 
 %description
