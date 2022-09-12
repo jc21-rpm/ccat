@@ -12,11 +12,12 @@
 
 Name:           ccat
 Version:        1.1.0
-Release:        1%{?dist}
+Release:        1
 Summary:        ccat is the colorizing cat. It works similar to cat but displays content with syntax highlighting.
 Group:          Applications/System
 License:        MIT
 URL:            https://github.com/%{gh_user}/%{name}
+Source:         https://github.com/%{gh_user}/%{name}/archive/v%{version}.tar.gz
 BuildRequires:  golang
 
 %description
@@ -30,20 +31,10 @@ Supported languages:
 - JSON
 
 %prep
-wget https://github.com/%{gh_user}/%{name}/archive/v%{version}.tar.gz
-tar xzf v%{version}.tar.gz
-
-mkdir -p %{_builddir}/src/github.com/%{gh_user}/
-cd %{_builddir}/src/github.com/%{gh_user}/
-ln -snf %{_builddir}/%{name}-%{version} %{name}
-cd %{name}
+%setup -q -n %{name}-%{version}
 
 %build
-export GOPATH="%{_builddir}"
-export PATH=$PATH:"%{_builddir}"/bin
-cd %{_builddir}/src/github.com/%{gh_user}/%{name}
 export LDFLAGS="${LDFLAGS} -X main.commit=%{gh_short} -X main.date=$(date -u +%Y%m%d.%H%M%%S) -X main.version=%{version}"
-
 %gobuild -o %{_builddir}/bin/%{name}
 
 %install
@@ -51,9 +42,8 @@ install -Dm0755 %{_builddir}/bin/%{name} %{buildroot}%{_bindir}/%{name}
 
 %files
 %{_bindir}/%{name}
-%doc %{name}-%{version}/LICENSE %{name}-%{version}/*.md
+%doc LICENSE *.md
 
 %changelog
 * Fri Aug 31 2018 Jamie Curnow <jc@jc21.com> 1.1.0-1
 - Initial spec
-
