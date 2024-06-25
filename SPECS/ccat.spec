@@ -3,7 +3,7 @@
 
 Name:          ccat
 Version:       1.1.0
-Release:       1
+Release:       1%{?dist}
 Summary:       ccat is the colorizing cat. It works similar to cat but displays content with syntax highlighting.
 License:       MIT
 URL:           https://github.com/%{gh_user}/%{name}

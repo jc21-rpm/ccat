@@ -1,4 +1,3 @@
-# [ccat](https://github.com/jingweno/ccat)
+# [ccat](https://github.com/owenthereal/ccat)
 
-Builds for Centos 6/7 hosted on [yum.jc21.com](https://yum.jc21.com)
-
+Builds for Enterprise Linux hosted on [yum.jc21.com](https://yum.jc21.com)
